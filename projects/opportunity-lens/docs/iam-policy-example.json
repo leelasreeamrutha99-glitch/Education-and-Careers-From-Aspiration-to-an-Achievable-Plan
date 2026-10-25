@@ -1,0 +1,11 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ReadOnlyOneLearningCatalogObject",
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::REPLACE_WITH_YOUR_PRIVATE_BUCKET/catalog/learning_resources.json"
+    }
+  ]
+}
