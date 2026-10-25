@@ -4,13 +4,16 @@ import os
 
 import boto3
 from botocore.exceptions import BotoCoreError, ClientError
+from strands import tool
 
 
+@tool
 def read_s3_evidence() -> str:
-    """Fetch and return the configured JSON audit-evidence object from S3.
+    """Fetch the configured JSON audit-evidence object from Amazon S3.
 
-    Configure AWS_REGION, AUDIT_S3_BUCKET and AUDIT_S3_KEY in the environment.
+    Uses AWS_REGION, AUDIT_S3_BUCKET and AUDIT_S3_KEY environment variables.
     Authentication uses the AWS SDK credential chain (for example, an IAM role).
+    This tool is read-only and never deletes or modifies S3 objects.
     """
     bucket = os.getenv("AUDIT_S3_BUCKET")
     key = os.getenv("AUDIT_S3_KEY", "sample_evidence.json")
@@ -26,7 +29,6 @@ def read_s3_evidence() -> str:
         response = client.get_object(Bucket=bucket, Key=key)
         body = response["Body"].read()
     except (ClientError, BotoCoreError) as exc:
-        # Keep credential details and signed request data out of model-visible output.
         return (
             "S3 evidence read failed. Check the configured bucket/key, region, "
             "AWS credentials, network access, and least-privilege s3:GetObject permission. "
