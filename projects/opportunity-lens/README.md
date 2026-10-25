@@ -68,7 +68,7 @@ The model cannot choose the bucket/key. The tool reads one environment-configure
 ## Data contract and safeguards
 
 - Versioned JSON schema, unique IDs, bounded entry count and bounded query/result sizes.
-- HTTPS URLs only; embedded URL credentials are rejected.
+- HTTPS URLs only; embedded URL credentials are rejected, and each entry's approved host must match a small code-level allowlist of official domains.
 - Enumerated learning levels/formats, non-empty skills, and ISO dates are validated.
 - Catalog items older than 180 days from reviewed_on are marked REVIEW_DUE.
 - SHA-256 fingerprints the exact bytes retrieved; it does not establish who authored the catalog.
@@ -79,7 +79,7 @@ The reviewed_on date is a curator-maintained annotation, not an automated live U
 
 ## Tests
 
-The offline suite covers successful filters, no-match behavior, free-budget handling, result limits, review-age marking, duplicate IDs, invalid HTTPS URLs, future review dates, unsupported schema versions, mocked S3 retrieval, SHA-256/version metadata, expected bucket owner, missing configuration, oversized objects, and invalid JSON. No real AWS resource is needed for tests.
+The offline suite covers successful filters, no-match behavior, free-budget handling, result limits, review-age marking, duplicate IDs, invalid HTTPS URLs, unapproved domains, punctuation-only queries, future review dates, unsupported schema versions, mocked S3 retrieval, SHA-256/version metadata, expected bucket owner, missing configuration, oversized objects, and invalid JSON. No real AWS resource is needed for tests.
 
 ## Required challenge demo video
 
