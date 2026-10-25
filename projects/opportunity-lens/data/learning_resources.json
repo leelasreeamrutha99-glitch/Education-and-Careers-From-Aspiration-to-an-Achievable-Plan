@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "catalog_id": "opportunity-lens-starter-catalog",
+  "publisher": "OpportunityLens demonstration catalog",
+  "catalog_updated_on": "2026-10-25",
+  "resources": [
+    {
+      "id": "python-tutorial",
+      "title": "The Python Tutorial",
+      "provider": "Python Software Foundation",
+      "official_url": "https://docs.python.org/3/tutorial/index.html",
+      "skills": [
+        "python",
+        "programming",
+        "data science"
+      ],
+      "level": "beginner",
+      "format": "documentation",
+      "cost_label": "Free documentation",
+      "learning_outcome": "Learn core Python syntax, data structures, modules, and exceptions.",
+      "reviewed_on": "2026-10-25"
+    },
+    {
+      "id": "postgresql-sql-tutorial",
+      "title": "PostgreSQL Tutorial",
+      "provider": "PostgreSQL Global Development Group",
+      "official_url": "https://www.postgresql.org/docs/current/tutorial.html",
+      "skills": [
+        "sql",
+        "databases",
+        "data analysis"
+      ],
+      "level": "beginner",
+      "format": "documentation",
+      "cost_label": "Free documentation",
+      "learning_outcome": "Practice relational database concepts, queries, joins, aggregates, and transactions.",
+      "reviewed_on": "2026-10-25"
+    },
+    {
+      "id": "pandas-getting-started",
+      "title": "Getting started with pandas",
+      "provider": "pandas project",
+      "official_url": "https://pandas.pydata.org/docs/getting_started/",
+      "skills": [
+        "python",
+        "pandas",
+        "data analysis",
+        "data science"
+      ],
+      "level": "beginner",
+      "format": "documentation",
+      "cost_label": "Free documentation",
+      "learning_outcome": "Explore tabular data, read and write data, select rows, and summarize datasets.",
+      "reviewed_on": "2026-10-25"
+    },
+    {
+      "id": "scikit-learn-user-guide",
+      "title": "scikit-learn User Guide",
+      "provider": "scikit-learn project",
+      "official_url": "https://scikit-learn.org/stable/user_guide.html",
+      "skills": [
+        "machine learning",
+        "python",
+        "model evaluation",
+        "data science"
+      ],
+      "level": "intermediate",
+      "format": "documentation",
+      "cost_label": "Free documentation",
+      "learning_outcome": "Study supervised learning, model selection, preprocessing, and evaluation workflows.",
+      "reviewed_on": "2026-10-25"
+    },
+    {
+      "id": "bedrock-getting-started",
+      "title": "Amazon Bedrock Quickstart",
+      "provider": "Amazon Web Services",
+      "official_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/getting-started.html",
+      "skills": [
+        "aws",
+        "generative ai",
+        "amazon bedrock",
+        "ai engineering"
+      ],
+      "level": "beginner",
+      "format": "documentation",
+      "cost_label": "Free documentation; AWS usage may incur charges",
+      "learning_outcome": "Understand the prerequisites and first steps for using foundation models through Amazon Bedrock.",
+      "reviewed_on": "2026-10-25"
+    }
+  ]
+}
