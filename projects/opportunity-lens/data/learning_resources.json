@@ -18,7 +18,8 @@
       "format": "documentation",
       "cost_label": "Free documentation",
       "learning_outcome": "Learn core Python syntax, data structures, modules, and exceptions.",
-      "reviewed_on": "2026-10-25"
+      "reviewed_on": "2026-10-25",
+      "approved_host": "docs.python.org"
     },
     {
       "id": "postgresql-sql-tutorial",
@@ -34,7 +35,8 @@
       "format": "documentation",
       "cost_label": "Free documentation",
       "learning_outcome": "Practice relational database concepts, queries, joins, aggregates, and transactions.",
-      "reviewed_on": "2026-10-25"
+      "reviewed_on": "2026-10-25",
+      "approved_host": "www.postgresql.org"
     },
     {
       "id": "pandas-getting-started",
@@ -51,7 +53,8 @@
       "format": "documentation",
       "cost_label": "Free documentation",
       "learning_outcome": "Explore tabular data, read and write data, select rows, and summarize datasets.",
-      "reviewed_on": "2026-10-25"
+      "reviewed_on": "2026-10-25",
+      "approved_host": "pandas.pydata.org"
     },
     {
       "id": "scikit-learn-user-guide",
@@ -68,7 +71,8 @@
       "format": "documentation",
       "cost_label": "Free documentation",
       "learning_outcome": "Study supervised learning, model selection, preprocessing, and evaluation workflows.",
-      "reviewed_on": "2026-10-25"
+      "reviewed_on": "2026-10-25",
+      "approved_host": "scikit-learn.org"
     },
     {
       "id": "bedrock-getting-started",
@@ -85,7 +89,8 @@
       "format": "documentation",
       "cost_label": "Free documentation; AWS usage may incur charges",
       "learning_outcome": "Understand the prerequisites and first steps for using foundation models through Amazon Bedrock.",
-      "reviewed_on": "2026-10-25"
+      "reviewed_on": "2026-10-25",
+      "approved_host": "docs.aws.amazon.com"
     }
   ]
 }
