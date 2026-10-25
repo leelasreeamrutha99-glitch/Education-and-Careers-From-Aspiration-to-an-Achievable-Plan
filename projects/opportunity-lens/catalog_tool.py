@@ -22,6 +22,7 @@ MAX_RESOURCES = 300
 MAX_QUERY_LENGTH = 160
 VALID_FORMATS = {"documentation", "interactive", "course", "video", "lab", "any"}
 VALID_LEVELS = {"beginner", "intermediate", "advanced", "all-levels"}
+TRUSTED_HOSTS = {"docs.python.org", "www.postgresql.org", "pandas.pydata.org", "scikit-learn.org", "docs.aws.amazon.com"}
 RESOURCE_ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]{1,79}$")
 
 
@@ -80,9 +81,14 @@ def validate_catalog(payload: Any) -> dict[str, Any]:
             raise CatalogValidationError(f"{prefix}.official_url must be an absolute HTTPS URL")
         if parsed_url.username or parsed_url.password:
             raise CatalogValidationError(f"{prefix}.official_url must not contain embedded credentials")
-        if item.get("level") not in VALID_LEVELS:
+        approved_host = item.get("approved_host")
+        if not isinstance(approved_host, str) or approved_host not in TRUSTED_HOSTS or parsed_url.hostname != approved_host:
+            raise CatalogValidationError(f"{prefix}.official_url host must exactly match an approved host: {', '.join(sorted(TRUSTED_HOSTS))}")
+        level = item.get("level")
+        if not isinstance(level, str) or level not in VALID_LEVELS:
             raise CatalogValidationError(f"{prefix}.level must be one of {', '.join(sorted(VALID_LEVELS))}")
-        if item.get("format") not in VALID_FORMATS - {"any"}:
+        learning_format = item.get("format")
+        if not isinstance(learning_format, str) or learning_format not in VALID_FORMATS - {"any"}:
             raise CatalogValidationError(f"{prefix}.format must be one of {', '.join(sorted(VALID_FORMATS - {'any'}))}")
         skills = item.get("skills")
         if (not isinstance(skills, list) or not skills or len(skills) > 30 or
@@ -95,8 +101,8 @@ def validate_catalog(payload: Any) -> dict[str, Any]:
             raise CatalogValidationError(f"{prefix}.reviewed_on cannot be in the future")
         normalized.append({
             "id": resource_id, "title": item["title"].strip(), "provider": item["provider"].strip(),
-            "official_url": url, "skills": [skill.strip() for skill in skills],
-            "level": item["level"], "format": item["format"], "cost_label": item["cost_label"].strip(),
+            "official_url": url, "approved_host": approved_host, "skills": [skill.strip() for skill in skills],
+            "level": level, "format": learning_format, "cost_label": item["cost_label"].strip(),
             "learning_outcome": item["learning_outcome"].strip(), "reviewed_on": reviewed.isoformat(),
         })
     return {
