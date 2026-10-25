@@ -1,0 +1,37 @@
+name: OpportunityLens offline tests
+
+on:
+  push:
+    branches:
+      - opportunity-lens-weekend-challenge
+    paths:
+      - "projects/opportunity-lens/**"
+      - ".github/workflows/opportunity-lens-tests.yml"
+  pull_request:
+    paths:
+      - "projects/opportunity-lens/**"
+      - ".github/workflows/opportunity-lens-tests.yml"
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: projects/opportunity-lens
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: projects/opportunity-lens/requirements.txt
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run unit and mocked-S3 tests
+        run: python -m unittest discover -s tests -v
+      - name: Run local data-science demo
+        run: python main.py --skill "data science" --budget free
+      - name: Compile Python source
+        run: python -m compileall -q .
