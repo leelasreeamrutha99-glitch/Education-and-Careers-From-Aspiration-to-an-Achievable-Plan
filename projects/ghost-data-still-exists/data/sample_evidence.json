@@ -1,0 +1,19 @@
+{
+  "case_id": "CASE-1042",
+  "subject_ref": "customer-demo-1042",
+  "requested_at": "2026-10-24T09:00:00Z",
+  "checks": [
+    {
+      "system": "primary_database",
+      "status": "deleted"
+    },
+    {
+      "system": "search_index",
+      "status": "deleted"
+    },
+    {
+      "system": "customer_export",
+      "status": "present"
+    }
+  ]
+}
