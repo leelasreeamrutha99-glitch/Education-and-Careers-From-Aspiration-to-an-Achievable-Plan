@@ -1,19 +1,38 @@
 {
-  "case_id": "CASE-1042",
-  "subject_ref": "customer-demo-1042",
+  "schema_version": "1.0",
+  "case_id": "CASE-DEMO-1042",
+  "subject_ref": "synthetic-customer-ref-1042",
   "requested_at": "2026-10-24T09:00:00Z",
+  "required_systems": [
+    "primary_database",
+    "search_index",
+    "object_storage",
+    "customer_exports"
+  ],
   "checks": [
     {
       "system": "primary_database",
-      "status": "deleted"
+      "status": "DELETED",
+      "checked_at": "2026-10-24T09:12:00Z",
+      "evidence_ref": "synthetic://audit/case-demo-1042/database"
     },
     {
       "system": "search_index",
-      "status": "deleted"
+      "status": "DELETED",
+      "checked_at": "2026-10-24T09:13:00Z",
+      "evidence_ref": "synthetic://audit/case-demo-1042/search-index"
     },
     {
-      "system": "customer_export",
-      "status": "present"
+      "system": "object_storage",
+      "status": "DELETED",
+      "checked_at": "2026-10-24T09:14:00Z",
+      "evidence_ref": "synthetic://audit/case-demo-1042/object-storage"
+    },
+    {
+      "system": "customer_exports",
+      "status": "PRESENT",
+      "checked_at": "2026-10-24T09:15:00Z",
+      "evidence_ref": "synthetic://audit/case-demo-1042/customer-export"
     }
   ]
 }
