@@ -59,6 +59,17 @@ class TestCatalogSearch(unittest.TestCase):
         with self.assertRaisesRegex(CatalogValidationError, "Duplicate resource ID"):
             validate_catalog(bad)
 
+    def test_punctuation_only_query_is_rejected(self):
+        with self.assertRaisesRegex(ValueError, "searchable character"):
+            search_catalog(self.catalog, skill_query="!!!")
+
+    def test_reject_unapproved_host(self):
+        bad = json.loads(json.dumps(self.catalog))
+        bad["resources"][0]["official_url"] = "https://attacker.example/learn"
+        bad["resources"][0]["approved_host"] = "attacker.example"
+        with self.assertRaisesRegex(CatalogValidationError, "approved host"):
+            validate_catalog(bad)
+
     def test_reject_future_review_date(self):
         bad = json.loads(json.dumps(self.catalog))
         bad["resources"][0]["reviewed_on"] = "2099-01-01"
